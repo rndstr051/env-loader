@@ -6,9 +6,7 @@ module.exports.pitch = function(remainingRequest, precedingRequest, data) {
     this.addDependency(this.resourcePath);
 
     const fileContent = this.fs.readFileSync(this.resourcePath).toString();
-    console.info(fileContent);
     const outerMatch = fileContent.match(/export\s+module\s+(?<name>[^\s]+)\s*{(?<inner>[^}]*)}/);
-    console.info(JSON.stringify(outerMatch));
     const innerRegex = /const\s+(?<envname>[^\s:]+):(?<envtype>[^\s;]+)\s*;/g;
     const innerString = outerMatch.groups['inner'];
 
